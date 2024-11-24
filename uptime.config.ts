@@ -56,7 +56,7 @@ const workerConfig = {
       statusPageLink: 'https://pet.wavycat.ru',
       expectedCodes: [200],
       timeout: 5000,
-      checkLocationWorkerRoute: 'https://ru.wavycat.ru/',
+      // checkLocationWorkerRoute: 'https://ru.wavycat.ru/',
     },
     {
       id: 'ca-assets',
