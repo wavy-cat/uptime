@@ -29,7 +29,7 @@ export default function Header() {
               span
               fw={700}
               variant="gradient"
-              gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+              gradient={{ from: 'red', to: 'orange', deg: 90 }}
             >
               Uptime Page
             </Text>
