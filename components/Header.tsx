@@ -21,9 +21,8 @@ export default function Header() {
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
         <div>
-          <a href="https://github.com/lyc8503/UptimeFlare" target="_blank">
             <Text size="xl" span>
-              🕒
+              🔥
             </Text>
             <Text
               size="xl"
@@ -32,9 +31,8 @@ export default function Header() {
               variant="gradient"
               gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
             >
-              UptimeFlare
+              Uptime Page
             </Text>
-          </a>
         </div>
 
         <Group gap={5} visibleFrom="sm">
