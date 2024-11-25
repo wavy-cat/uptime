@@ -81,10 +81,6 @@ export default function Home({
           <a href="https://www.cloudflare.com/" target="_blank">
             Cloudflare
           </a>
-          , made with ❤ by{' '}
-          <a href="https://github.com/lyc8503" target="_blank">
-            lyc8503
-          </a>
           .
         </Text>
       </main>
