@@ -41,7 +41,7 @@ const workerConfig = {
       //   Authorization: 'Bearer YOUR_TOKEN_HERE',
       // },
       headers: {
-        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
       // [OPTIONAL] body to be sent
       // body: 'Hello, world!',
@@ -60,7 +60,7 @@ const workerConfig = {
       expectedCodes: [200],
       timeout: 30000,
       headers: {
-        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
       // checkLocationWorkerRoute: 'https://ru.wavycat.ru/',
     },
@@ -74,7 +74,7 @@ const workerConfig = {
       expectedCodes: [200],
       timeout: 2000,
       headers: {
-        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
     },
     {
@@ -86,7 +86,7 @@ const workerConfig = {
       expectedCodes: [200],
       timeout: 3000,
       headers: {
-        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
     },
     // Example TCP Monitor
