@@ -40,6 +40,9 @@ const workerConfig = {
       //   'User-Agent': 'Uptimeflare',
       //   Authorization: 'Bearer YOUR_TOKEN_HERE',
       // },
+      headers: {
+        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+      },
       // [OPTIONAL] body to be sent
       // body: 'Hello, world!',
       // [OPTIONAL] if specified, the response must contains the keyword to be considered as operational.
@@ -56,6 +59,9 @@ const workerConfig = {
       statusPageLink: 'https://pet.wavycat.ru',
       expectedCodes: [200],
       timeout: 7000,
+      headers: {
+        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+      },
       // checkLocationWorkerRoute: 'https://ru.wavycat.ru/',
     },
     {
@@ -67,6 +73,9 @@ const workerConfig = {
       statusPageLink: 'https://github.com/wavy-cat/Cat-Activity',
       expectedCodes: [200],
       timeout: 2000,
+      headers: {
+        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+      },
     },
     {
       id: 'totemlib-docs',
@@ -76,6 +85,9 @@ const workerConfig = {
       statusPageLink: 'https://totem-lib.wavycat.ru',
       expectedCodes: [200],
       timeout: 3000,
+      headers: {
+        'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
+      },
     },
     // Example TCP Monitor
     // {
