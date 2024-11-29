@@ -52,10 +52,10 @@ const workerConfig = {
       id: 'pet',
       name: 'PetPet service',
       method: 'GET',
-      target: 'https://pet.wavycat.ru',
+      target: 'https://pet.wavycat.ru/ds/613651509015740416.gif',
       statusPageLink: 'https://pet.wavycat.ru',
       expectedCodes: [200],
-      timeout: 5000,
+      timeout: 7000,
       // checkLocationWorkerRoute: 'https://ru.wavycat.ru/',
     },
     {
