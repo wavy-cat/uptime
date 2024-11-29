@@ -58,7 +58,7 @@ const workerConfig = {
       target: 'https://pet.wavycat.ru/ds/613651509015740416.gif?no-cache=true',
       statusPageLink: 'https://pet.wavycat.ru',
       expectedCodes: [200],
-      timeout: 7000,
+      timeout: 30000,
       headers: {
         'User-Agent': 'UptimeBot/1.0 (like Twitterbot)',
       },
