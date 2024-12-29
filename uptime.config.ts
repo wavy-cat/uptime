@@ -58,7 +58,7 @@ const workerConfig = {
       target: 'https://d5d08va5rllcj9h5rk7c.apigw.yandexcloud.net/ds/613651509015740416.gif?no-cache=true',
       statusPageLink: 'https://pet.wavycat.ru',
       expectedCodes: [200],
-      timeout: 30000,
+      timeout: 10000,
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
