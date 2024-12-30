@@ -1,6 +1,6 @@
 const pageConfig = {
   // Title for your status page
-  title: "WavyCat's Status Page",
+  title: 'WavyCat\'s Status Page',
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
     { link: 'https://wavycat.ru', label: 'Website' },
@@ -124,22 +124,43 @@ const workerConfig = {
       isUp: boolean,
       timeIncidentStart: number,
       timeNow: number,
-      reason: string
+      reason: string,
     ) => {
-      // This callback will be called when there's a status change for any monitor
-      // Write any Typescript code here
+      let text: string
 
-      // This will not follow the grace period settings and will be called immediately when the status changes
-      // You need to handle the grace period manually if you want to implement it
+      switch (isUp) {
+        case false:
+          text = `🔴 <b><a href="${monitor.target}">${monitor.name}</a> is down.</b>\nReason: ${reason}.`
+          break
+        case true:
+          const downtime = formatDurationSimple(timeIncidentStart, timeNow)
+          text = `🟢 <b><a href="${monitor.target}">${monitor.name}</a> is up!</b>\nDowntime: ${downtime}.`
+          break
+      }
+
+      await fetch(
+        `https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            chat_id: env.CHAT_ID,
+            text: text,
+            parse_mode: 'HTML',
+          }),
+        },
+      )
     },
     onIncident: async (
       env: any,
       monitor: any,
       timeIncidentStart: number,
       timeNow: number,
-      reason: string
+      reason: string,
     ) => {
-      // This callback will be called EVERY 1 MINTUE if there's an on-going incident for any monitor
+      // This callback will be called EVERY 1 MINUTE if there's an ongoing incident for any monitor
       // Write any Typescript code here
     },
   },
@@ -147,3 +168,17 @@ const workerConfig = {
 
 // Don't forget this, otherwise compilation fails.
 export { pageConfig, workerConfig }
+
+function formatDurationSimple(start: number, now: number): string {
+  const totalSeconds = now - start
+
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+
+  return [
+    hours ? `${hours}h` : '',
+    minutes ? `${minutes}m` : '',
+    seconds ? `${seconds}s` : '',
+  ].filter(Boolean).join(' ') || '0s'
+}
