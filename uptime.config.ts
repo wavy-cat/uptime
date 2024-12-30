@@ -11,8 +11,8 @@ const pageConfig = {
 }
 
 const workerConfig = {
-  // Write KV at most every 10 minutes unless the status changed
-  kvWriteCooldownMinutes: 10,
+  // Write KV at most every 6 minutes unless the status changed
+  kvWriteCooldownMinutes: 6,
   // Enable HTTP Basic auth for status page & API by uncommenting the line below, format `<USERNAME>:<PASSWORD>`
   // passwordProtection: 'username:password',
   // Define all your monitors here
@@ -46,7 +46,7 @@ const workerConfig = {
       // [OPTIONAL] body to be sent
       // body: 'Hello, world!',
       // [OPTIONAL] if specified, the response must contains the keyword to be considered as operational.
-      // responseKeyword: 'success',
+      responseKeyword: 'weather',
       // [OPTIONAL] if specified, the check will run in your specified region,
       // refer to docs https://github.com/lyc8503/UptimeFlare/wiki/Geo-specific-checks-setup before setting this value
       // checkLocationWorkerRoute: 'https://xxx.example.com',
@@ -81,13 +81,14 @@ const workerConfig = {
       id: 'totemlib-docs',
       name: 'wavy-totem-lib Docs',
       method: 'GET',
-      target: 'https://totem-lib.wavycat.ru',
+      target: 'https://totem-lib.wavycat.ru/overview.html',
       statusPageLink: 'https://totem-lib.wavycat.ru',
       expectedCodes: [200],
       timeout: 3000,
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
+      responseKeyword: 'wavy-totem-lib',
     },
     // Example TCP Monitor
     // {
