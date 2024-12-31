@@ -1,33 +1,6 @@
-import { connect } from 'cloudflare:sockets'
-import { MonitorTarget } from '../../uptime.types'
-import { withTimeout, fetchTimeout } from './util'
-
-interface UploaderResponse {
-  link: string
-}
-
-async function uploadFile(response: Response) {
-  try {
-    const blob = await response.blob();
-
-    const formData = new FormData()
-    formData.append('file', blob, 'uploaded_file.html')
-
-    const uploadResponse = await fetch('https://femboy.beauty/api/upload', {
-      method: 'POST',
-      body: formData,
-    })
-
-    const result: UploaderResponse = await uploadResponse.json()
-    if (!uploadResponse.ok) {
-      console.log('Error when uploading', uploadResponse.statusText)
-    }
-
-    console.log('Upload', result.link)
-  } catch (error) {
-    console.error('Error when uploadFile:', error)
-  }
-}
+import { connect } from "cloudflare:sockets";
+import { MonitorTarget } from "../../uptime.types";
+import { withTimeout, fetchTimeout } from "./util";
 
 export async function getStatus(
   monitor: MonitorTarget
@@ -44,7 +17,7 @@ export async function getStatus(
     // TCP port endpoint monitor
     try {
       // This is not a real https connection, but we need to add a dummy `https://` to parse the hostname & port
-      const parsed = new URL('https://' + monitor.target)
+      const parsed = new URL("https://" + monitor.target)
       const socket = connect({ hostname: parsed.hostname, port: Number(parsed.port) })
 
       // Now we have an `opened` promise!
@@ -86,10 +59,8 @@ export async function getStatus(
         if (!monitor.expectedCodes.includes(response.status)) {
           console.log(`${monitor.name} expected ${monitor.expectedCodes}, got ${response.status}`)
           status.up = false
-          status.err = `Expected codes: ${JSON.stringify(monitor.expectedCodes)}, Got: ${
-            response.status
-          }`
-          await uploadFile(response)
+          status.err = `Expected codes: ${JSON.stringify(monitor.expectedCodes)}, Got: ${response.status
+            }`
           return status
         }
       } else {
@@ -104,11 +75,7 @@ export async function getStatus(
       if (monitor.responseKeyword) {
         const responseBody = await response.text()
         if (!responseBody.includes(monitor.responseKeyword)) {
-          console.log(
-            `${monitor.name} expected keyword ${
-              monitor.responseKeyword
-            }, not found in response (truncated to 100 chars): ${responseBody.slice(0, 100)}`
-          )
+          console.log(`${monitor.name} expected keyword ${monitor.responseKeyword}, not found in response (truncated to 100 chars): ${responseBody.slice(0, 100)}`)
           status.up = false
           status.err = "HTTP response doesn't contain the configured keyword"
           return status
