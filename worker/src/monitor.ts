@@ -3,7 +3,8 @@ import { MonitorTarget } from "../../uptime.types";
 import { withTimeout, fetchTimeout } from "./util";
 
 export async function getStatus(
-  monitor: MonitorTarget
+  monitor: MonitorTarget,
+  retry: number = 0,
 ): Promise<{ ping: number; up: boolean; err: string }> {
   let status = {
     ping: 0,
@@ -57,6 +58,10 @@ export async function getStatus(
 
       if (monitor.expectedCodes) {
         if (!monitor.expectedCodes.includes(response.status)) {
+          if (monitor.maxRetries && monitor.maxRetries < retry) {
+            return await getStatus(monitor, retry + 1)
+          }
+
           console.log(`${monitor.name} expected ${monitor.expectedCodes}, got ${response.status}`)
           status.up = false
           status.err = `Expected codes: ${JSON.stringify(monitor.expectedCodes)}, Got: ${response.status
