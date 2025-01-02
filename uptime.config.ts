@@ -62,7 +62,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
-      maxRetries: 2
       // checkLocationWorkerRoute: 'https://ru.wavycat.ru/',
     },
     {
