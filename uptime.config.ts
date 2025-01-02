@@ -26,11 +26,11 @@ const workerConfig = {
       // `method` should be a valid HTTP Method
       method: 'GET',
       // `target` is a valid URL
-      target: 'https://wavycat.ru/weather',
+      target: 'https://www.wavycat.ru/weather',
       // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
       // tooltip: 'This is a tooltip for this monitor',
       // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
-      statusPageLink: 'https://wavycat.ru',
+      statusPageLink: 'https://www.wavycat.ru',
       // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
       expectedCodes: [200],
       // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
