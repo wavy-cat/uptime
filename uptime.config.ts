@@ -3,8 +3,8 @@ const pageConfig = {
   title: 'WavyCat\'s Status Page',
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
-    { link: 'https://wavycat.ru', label: 'Website' },
     { link: 'https://github.com/wavy-cat', label: 'GitHub' },
+    { link: 'https://wavycat.ru', label: 'Website', highlight: true },
     //{ link: 'https://blog.lyc8503.net/', label: 'Blog' },
     //{ link: 'mailto:me@lyc8503.net', label: 'Email Me', highlight: true },
   ],

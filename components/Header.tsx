@@ -22,16 +22,16 @@ export default function Header() {
       <Container size="md" className={classes.inner}>
         <div>
             <Text size="xl" span>
-              🔥
+              🚦
             </Text>
             <Text
               size="xl"
               span
               fw={700}
               variant="gradient"
-              gradient={{ from: 'red', to: 'orange', deg: 90 }}
+              gradient={{ from: 'green', to: 'teal', deg: 90 }}
             >
-              Uptime Page
+               Uptime Page
             </Text>
         </div>
 
