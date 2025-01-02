@@ -55,7 +55,7 @@ const workerConfig = {
       id: 'pet',
       name: 'PetPet service',
       method: 'GET',
-      target: 'https://d5d08va5rllcj9h5rk7c.apigw.yandexcloud.net/ds/613651509015740416.gif?no-cache=true',
+      target: 'https://pet.wavycat.ru',
       statusPageLink: 'https://pet.wavycat.ru',
       expectedCodes: [200],
       timeout: 10000,
