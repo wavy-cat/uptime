@@ -52,19 +52,6 @@ const workerConfig = {
       // checkLocationWorkerRoute: 'https://xxx.example.com',
     },
     {
-      id: 'pet',
-      name: 'PetPet service',
-      method: 'GET',
-      target: 'https://pet.wavycat.ru/ds/613651509015740416.gif?no-cache=true',
-      statusPageLink: 'https://pet.wavycat.ru',
-      expectedCodes: [200, 520, 525],
-      timeout: 10000,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
-      },
-      // checkLocationWorkerRoute: 'https://ru.wavycat.ru/',
-    },
-    {
       id: 'ca-assets',
       name: 'Cat Activity Assets',
       method: 'GET',
