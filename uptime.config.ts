@@ -77,6 +77,18 @@ const workerConfig = {
       },
       responseKeyword: 'wavy-totem-lib',
     },
+    {
+      id: 'codeland',
+      name: 'CodeLand',
+      method: 'GET',
+      target: 'https://code.wavycat.ru/',
+      tooltip: 'Private Git hosting',
+      expectedCodes: [200],
+      timeout: 3000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
+      },
+    },
     // Example TCP Monitor
     // {
     //   id: 'test_tcp_monitor',
