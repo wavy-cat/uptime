@@ -55,7 +55,7 @@ const workerConfig = {
       id: 'ca-assets',
       name: 'Cat Activity Assets',
       method: 'GET',
-      target: 'https://cat-activity.wavycat.ru',
+      target: 'https://cat-activity.wavycat.ru/IDE/Mocha/jetbrains.png',
       tooltip: 'Server with Cat Activity plugin assets',
       statusPageLink: 'https://github.com/wavy-cat/Cat-Activity',
       expectedCodes: [200],
