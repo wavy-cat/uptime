@@ -84,7 +84,7 @@ const workerConfig = {
       target: 'https://code.wavycat.ru/',
       tooltip: 'Private Git hosting',
       expectedCodes: [200],
-      timeout: 3000,
+      timeout: 15000,
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
