@@ -59,7 +59,7 @@ const workerConfig = {
       tooltip: 'Server with Cat Activity plugin assets',
       statusPageLink: 'https://github.com/wavy-cat/Cat-Activity',
       expectedCodes: [200],
-      timeout: 2000,
+      timeout: 10000,
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
       },
