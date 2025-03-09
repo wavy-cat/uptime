@@ -156,7 +156,7 @@ const workerConfig = {
           break
       }
 
-      const response = await fetch(env.WEBHOOK_URL, {
+      await fetch(env.WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -164,7 +164,6 @@ const workerConfig = {
         },
         body: JSON.stringify({ embeds: [embed] }),
       })
-      console.log(await response.text())
     },
     onIncident: async (
       env: any,
