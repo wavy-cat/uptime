@@ -1,6 +1,6 @@
 const pageConfig = {
   // Title for your status page
-  title: 'WavyCat\'s Status Page',
+  title: "WavyCat's Status Page",
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
     { link: 'https://github.com/wavy-cat', label: 'GitHub' },
@@ -9,6 +9,8 @@ const pageConfig = {
     //{ link: 'mailto:me@lyc8503.net', label: 'Email Me', highlight: true },
   ],
 }
+
+const userAgent = 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://uptime.wavycat.ru)'
 
 const workerConfig = {
   // Write KV at most every 6 minutes unless the status changed
@@ -41,7 +43,7 @@ const workerConfig = {
       //   Authorization: 'Bearer YOUR_TOKEN_HERE',
       // },
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
+        'User-Agent': userAgent,
       },
       // [OPTIONAL] body to be sent
       // body: 'Hello, world!',
@@ -61,7 +63,7 @@ const workerConfig = {
       expectedCodes: [200],
       timeout: 10000,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
+        'User-Agent': userAgent,
       },
     },
     {
@@ -73,7 +75,7 @@ const workerConfig = {
       expectedCodes: [200],
       timeout: 3000,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
+        'User-Agent': userAgent,
       },
       responseKeyword: 'wavy-totem-lib',
     },
@@ -86,7 +88,7 @@ const workerConfig = {
       expectedCodes: [200],
       timeout: 15000,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://wavycat.ru)',
+        'User-Agent': userAgent,
       },
     },
     // Example TCP Monitor
@@ -123,44 +125,52 @@ const workerConfig = {
       isUp: boolean,
       timeIncidentStart: number,
       timeNow: number,
-      reason: string,
+      reason: string
     ) => {
-      let text: string
+      let embed
 
       switch (isUp) {
         case false:
-          text = `🔴 <b><a href="${monitor.target}">${monitor.name}</a> is down.</b>\n${reason}.`
+          embed = {
+            title: `${monitor.name} is down!`,
+            color: 15158332,
+            fields: [
+              {
+                name: 'Reason',
+                value: reason,
+              },
+            ],
+          }
           break
         case true:
-          const downtime = formatDurationSimple(timeIncidentStart, timeNow)
-          text = `🟢 <b><a href="${monitor.target}">${monitor.name}</a> is up!</b>\nDowntime: ${downtime}.`
+          embed = {
+            title: `${monitor.name} is up!`,
+            color: 3066993,
+            fields: [
+              {
+                name: 'Downtime',
+                value: formatDurationSimple(timeIncidentStart, timeNow),
+              },
+            ],
+          }
           break
       }
 
-      await fetch(
-        `https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            chat_id: env.CHAT_ID,
-            text: text,
-            parse_mode: 'HTML',
-            link_preview_options: {
-              is_disabled: true,
-            },
-          }),
+      await fetch(env.WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': userAgent,
         },
-      )
+        body: JSON.stringify({ embeds: [embed] }),
+      })
     },
     onIncident: async (
       env: any,
       monitor: any,
       timeIncidentStart: number,
       timeNow: number,
-      reason: string,
+      reason: string
     ) => {
       // This callback will be called EVERY 1 MINUTE if there's an ongoing incident for any monitor
       // Write any Typescript code here
@@ -178,9 +188,9 @@ function formatDurationSimple(start: number, now: number): string {
   const minutes = Math.floor((totalSeconds % 3600) / 60)
   const seconds = totalSeconds % 60
 
-  return [
-    hours ? `${hours}h` : '',
-    minutes ? `${minutes}m` : '',
-    seconds ? `${seconds}s` : '',
-  ].filter(Boolean).join(' ') || '0s'
+  return (
+    [hours ? `${hours}h` : '', minutes ? `${minutes}m` : '', seconds ? `${seconds}s` : '']
+      .filter(Boolean)
+      .join(' ') || '0s'
+  )
 }
