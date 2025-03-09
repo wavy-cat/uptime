@@ -129,7 +129,7 @@ const workerConfig = {
 
       switch (isUp) {
         case false:
-          text = `🔴 <b><a href="${monitor.target}">${monitor.name}</a> is down.</b>\nReason: ${reason}.`
+          text = `🔴 <b><a href="${monitor.target}">${monitor.name}</a> is down.</b>\n${reason}.`
           break
         case true:
           const downtime = formatDurationSimple(timeIncidentStart, timeNow)
