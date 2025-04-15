@@ -79,6 +79,19 @@ const workerConfig = {
       },
       responseKeyword: 'wavy-totem-lib',
     },
+    {
+      id: 'petpet',
+      name: 'PetPet',
+      method: 'GET',
+      target: 'https://pet.wavycat.ru/',
+      statusPageLink: 'https://pet.wavycat.ru/',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': userAgent,
+      },
+      responseKeyword: 'PetPet',
+    },
     // Example TCP Monitor
     // {
     //   id: 'test_tcp_monitor',
