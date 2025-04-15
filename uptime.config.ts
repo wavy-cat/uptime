@@ -90,7 +90,6 @@ const workerConfig = {
       headers: {
         'User-Agent': userAgent,
       },
-      responseKeyword: 'PetPet',
     },
     // Example TCP Monitor
     // {
