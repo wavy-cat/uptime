@@ -7,14 +7,14 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2.0.3
-        with:
-          terraform_version: 1.6.4
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v2.0.3
+      #   with:
+      #     terraform_version: 1.6.4
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
@@ -66,9 +66,9 @@ jobs:
 
       - name: Install packages
         run: |
-          npm install
+          npm ci
           cd worker
-          npm install
+          npm ci
 
       - name: Build worker
         run: |
@@ -79,18 +79,18 @@ jobs:
         run: |
           npx @cloudflare/next-on-pages
 
-      - name: Deploy using Terraform
-        # We're using terraform for first-time setup here,
-        # since we didn't setup a remote backend to store state,
-        # following runs will fail with name conflict, which is normal.
-        continue-on-error: true
+      # - name: Deploy using Terraform
+      #   # We're using terraform for first-time setup here,
+      #   # since we didn't setup a remote backend to store state,
+      #   # following runs will fail with name conflict, which is normal.
+      #   continue-on-error: true
 
-        run: |
-          terraform init
-          terraform apply -auto-approve -input=false
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          TF_VAR_CLOUDFLARE_ACCOUNT_ID: ${{ steps.fetch_account_id.outputs.account_id }}
+      #   run: |
+      #     terraform init
+      #     terraform apply -auto-approve -input=false
+      #   env:
+      #     CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      #     TF_VAR_CLOUDFLARE_ACCOUNT_ID: ${{ steps.fetch_account_id.outputs.account_id }}
 
       # Still need to upload worker to keep it up-to-date (Terraform will fail after first-time setup)
       - name: Upload worker
