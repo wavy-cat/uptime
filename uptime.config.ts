@@ -86,7 +86,7 @@ const workerConfig = {
       target: 'https://pet.wavycat.ru/ping',
       statusPageLink: 'https://pet.wavycat.ru/',
       expectedCodes: [200, 520, 525],
-      timeout: 10000,
+      timeout: 30000,
       headers: {
         'User-Agent': userAgent,
       },
