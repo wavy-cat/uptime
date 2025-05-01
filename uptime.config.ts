@@ -91,6 +91,18 @@ const workerConfig = {
         'User-Agent': userAgent,
       },
     },
+    {
+      id: 'codeland',
+      name: 'CodeLand',
+      method: 'GET',
+      target: 'https://code.wavycat.ru/',
+      tooltip: 'Private Forgejo instance',
+      expectedCodes: [200],
+      timeout: 5000,
+      headers: {
+        'User-Agent': userAgent,
+      },
+    },
     // Example TCP Monitor
     // {
     //   id: 'test_tcp_monitor',
