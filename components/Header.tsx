@@ -22,18 +22,18 @@ export default function Header() {
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
         <div>
-          <a href="https://github.com/lyc8503/UptimeFlare" target="_blank">
+          <a href="https://uptime.wavycat.ru" target="_blank">
             <Text size="xl" span>
-              🕒
+              🚦
             </Text>
             <Text
               size="xl"
               span
               fw={700}
               variant="gradient"
-              gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+              gradient={{ from: 'green', to: 'teal', deg: 90 }}
             >
-              UptimeFlare
+              Uptime Page
             </Text>
           </a>
         </div>
