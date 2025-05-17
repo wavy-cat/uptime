@@ -178,6 +178,7 @@ const workerConfig: WorkerConfig = {
               {
                 name: 'Reason',
                 value: reason,
+                inline: true,
               },
             ],
           }
@@ -190,6 +191,7 @@ const workerConfig: WorkerConfig = {
               {
                 name: 'Downtime',
                 value: formatDurationSimple(timeIncidentStart, timeNow),
+                inline: true,
               },
             ],
           }
@@ -199,6 +201,7 @@ const workerConfig: WorkerConfig = {
       embed.fields.push({
         name: 'Location',
         value: monitor.checkProxy ? monitor.checkProxy.replace("worker://", "") : await getColo(),
+        inline: true,
       })
 
       await fetch(env.WEBHOOK_URL, {
