@@ -140,7 +140,6 @@ const workerConfig: WorkerConfig = {
         'User-Agent': userAgent,
       },
       hideLatencyChart: true,
-      checkProxy: 'worker://eeur',
     },
   ],
   notification: {
