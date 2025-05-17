@@ -26,7 +26,7 @@ resource "cloudflare_worker_script" "uptimeflare" {
   name               = "uptimeflare_worker"
   content            = file("worker/dist/index.js")
   module             = true
-  compatibility_date = "2023-11-08"
+  compatibility_date = "2025-04-02"
 
   kv_namespace_binding {
     name         = "UPTIMEFLARE_STATE"
@@ -38,7 +38,7 @@ resource "cloudflare_worker_cron_trigger" "uptimeflare_worker_cron" {
   account_id  = var.CLOUDFLARE_ACCOUNT_ID
   script_name = cloudflare_worker_script.uptimeflare.name
   schedules = [
-    "*/10 * * * *", # every 10 minute, you can reduce the KV write by increase the worker settings of `kvWriteCooldownMinutes`
+    "* * * * *", # every 1 minute, you can reduce the KV write by increase the worker settings of `kvWriteCooldownMinutes`
   ]
 }
 
@@ -52,7 +52,7 @@ resource "cloudflare_pages_project" "uptimeflare" {
       kv_namespaces = {
         UPTIMEFLARE_STATE = cloudflare_workers_kv_namespace.uptimeflare_kv.id
       }
-      compatibility_date  = "2023-11-08"
+      compatibility_date  = "2025-04-02"
       compatibility_flags = ["nodejs_compat"]
     }
   }
