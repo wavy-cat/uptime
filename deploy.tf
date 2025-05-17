@@ -28,6 +28,10 @@ resource "cloudflare_worker_script" "uptimeflare" {
   module             = true
   compatibility_date = "2025-04-02"
 
+  placement {
+    mode = "smart"
+  }
+
   kv_namespace_binding {
     name         = "UPTIMEFLARE_STATE"
     namespace_id = cloudflare_workers_kv_namespace.uptimeflare_kv.id
@@ -38,7 +42,7 @@ resource "cloudflare_worker_cron_trigger" "uptimeflare_worker_cron" {
   account_id  = var.CLOUDFLARE_ACCOUNT_ID
   script_name = cloudflare_worker_script.uptimeflare.name
   schedules = [
-    "* * * * *", # every 1 minute, you can reduce the KV write by increase the worker settings of `kvWriteCooldownMinutes`
+    "*/3 * * * *", # every 3 minute, you can reduce the KV write by increase the worker settings of `kvWriteCooldownMinutes`
   ]
 }
 

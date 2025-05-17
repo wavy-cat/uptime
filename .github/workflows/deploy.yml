@@ -149,7 +149,7 @@ jobs:
                --url https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/uptimeflare_worker/script-settings \
                --header 'Authorization: Bearer '$CLOUDFLARE_API_TOKEN \
                --header 'Content-Type: application/json' \
-               -d '{"observability":{"enabled":true}}'
+               -d '{"observability":{"enabled":true,"head_sampling_rate":0.8}}'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ steps.fetch_account_id.outputs.account_id }}
