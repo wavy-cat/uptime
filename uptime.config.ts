@@ -90,7 +90,7 @@ const workerConfig: WorkerConfig = {
     },
     {
       id: 'totemlib-docs',
-      name: 'wavy-totem-lib Docs',
+      name: 'TotemLib Documentation',
       method: 'GET',
       target: 'https://totem-lib.wavycat.ru/overview.html',
       statusPageLink: 'https://totem-lib.wavycat.ru',
