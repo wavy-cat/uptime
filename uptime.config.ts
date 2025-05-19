@@ -240,13 +240,21 @@ const maintenances: MaintenanceConfig[] = [
   //   // Description of the maintenance, will be shown at status page
   //   body: 'This is a test maintenance, server software upgrade',
   //   // Start time of the maintenance, in UNIX timestamp or ISO 8601 format
-  //   start: '2025-04-27T00:00:00+08:00',
+  //   start: '2025-04-27T00:00:00+05:00',
   //   // [Optional] end time of the maintenance, in UNIX timestamp or ISO 8601 format
   //   // if not specified, the maintenance will be considered as on-going
-  //   end: '2025-04-30T00:00:00+08:00',
+  //   end: '2025-04-30T00:00:00+05:00',
   //   // [Optional] color of the maintenance alert at status page, default to "yellow"
   //   color: 'blue',
   // },
+  {
+    monitors: ['codeland'],
+    title: 'Test Maintenance',
+    body: 'I have no idea what the fuck this shit is. The provider says the server is being updated. I have no fucking clue what can take over 5 hours to update, and neither I nor anyone else gives a shit about it. I just want to check how the maintenance system works here.',
+    start: '2025-05-19T00:00:00+05:00',
+    end: '2025-05-20T00:00:00+05:00',
+    color: 'yellow',
+  },
 ]
 
 // Don't forget this, otherwise compilation fails.
