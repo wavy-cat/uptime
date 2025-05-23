@@ -92,7 +92,7 @@ const workerConfig: WorkerConfig = {
       id: 'totemlib-docs',
       name: 'TotemLib Documentation',
       method: 'GET',
-      target: 'https://totem-lib.wavycat.ru/overview.html',
+      target: 'https://totem-lib.wavycat.ru/',
       statusPageLink: 'https://totem-lib.wavycat.ru',
       expectedCodes: [200],
       timeout: 3000,
