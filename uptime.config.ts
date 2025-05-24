@@ -87,6 +87,7 @@ const workerConfig: WorkerConfig = {
       headers: {
         'User-Agent': userAgent,
       },
+      hideLatencyChart: true,
     },
     {
       id: 'totemlib-docs',
@@ -100,6 +101,7 @@ const workerConfig: WorkerConfig = {
         'User-Agent': userAgent,
       },
       responseKeyword: 'wavy-totem-lib',
+      hideLatencyChart: true,
     },
     {
       id: 'ca-assets',
