@@ -124,11 +124,11 @@ const workerConfig: WorkerConfig = {
       target: 'https://pet.wavycat.ru/ping',
       statusPageLink: 'https://pet.wavycat.ru/',
       expectedCodes: [200],
-      timeout: 5000,
+      timeout: 15000,
       headers: {
         'User-Agent': userAgent,
       },
-      checkProxy: 'worker://weur',
+      checkProxy: 'worker://eeur',
     },
     {
       id: 'codeland',
