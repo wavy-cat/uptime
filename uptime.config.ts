@@ -137,7 +137,7 @@ const workerConfig: WorkerConfig = {
       target: 'https://code.wavycat.ru/',
       tooltip: 'Private Forgejo instance',
       expectedCodes: [200],
-      timeout: 10000,
+      timeout: 30000,
       headers: {
         'User-Agent': userAgent,
       },
