@@ -143,6 +143,18 @@ const workerConfig: WorkerConfig = {
       },
       hideLatencyChart: true,
     },
+    {
+      id: 'piped',
+      name: 'Piped - Amsterdam',
+      method: 'GET',
+      target: 'https://piped.local-magic/',
+      expectedCodes: [200],
+      timeout: 30000,
+      headers: {
+        'User-Agent': userAgent,
+      },
+      checkProxy: 'https://magic-proxy.wavycat.ru/',
+    },
   ],
   notification: {
     // // [Optional] apprise API server URL
