@@ -1,4 +1,6 @@
 import { MaintenanceConfig, PageConfig, WorkerConfig } from './types/config'
+import { iataToCountry } from '@/util/iata'
+import { getWorkerLocation } from '@/worker/src/util'
 
 const pageConfig: PageConfig = {
   // Title for your status page
@@ -153,7 +155,7 @@ const workerConfig: WorkerConfig = {
       headers: {
         'User-Agent': userAgent,
       },
-      checkProxy: 'https://magic-proxy.wavycat.ru/',
+      checkProxy: 'https://magic-proxy.wavycat.ru',
     },
   ],
   notification: {
@@ -212,9 +214,20 @@ const workerConfig: WorkerConfig = {
           break
       }
 
+      let colo
+
+      switch (monitor.checkProxy) {
+        case true:
+          colo = monitor.checkProxy.replace("worker://", "").replace("https://", "")
+          break
+        case false:
+          colo = iataToCountry(await getWorkerLocation() || 'Unknown')
+          break
+      }
+
       embed.fields.push({
         name: 'Location',
-        value: monitor.checkProxy ? monitor.checkProxy.replace("worker://", "") : await getColo(),
+        value: colo,
         inline: true,
       })
 
@@ -286,24 +299,4 @@ function formatDurationSimple(start: number, now: number): string {
       .filter(Boolean)
       .join(' ') || '0s'
   )
-}
-
-async function getColo(): Promise<string> {
-  try {
-    const response = await fetch('https://www.wavycat.ru/cdn-cgi/trace');
-    if (!response.ok) return `Error: ${response.statusText}`
-    const text = await response.text();
-
-    // Ищем строку, начинающуюся с "colo="
-    const coloMatch = text.split('\n')
-      .find(line => line.startsWith('colo='));
-
-    if (!coloMatch) return "Error: colo not found";
-
-    // Возвращаем значение после "colo="
-    return coloMatch.substring(5);
-  } catch (error) {
-    console.error('Error while retrieving colocation data:', error);
-    return "Error";
-  }
 }
