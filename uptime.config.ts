@@ -105,7 +105,7 @@ const workerConfig: WorkerConfig = {
     },
     {
       id: 'ca-assets',
-      name: 'Cat Activity Assets',
+      name: 'Cat Activity',
       method: 'GET',
       target: 'https://cat-activity.wavycat.ru/Latte/go.png',
       tooltip: 'Server with Cat Activity plugin assets',
