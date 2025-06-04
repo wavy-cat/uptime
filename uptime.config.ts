@@ -147,13 +147,13 @@ const workerConfig: WorkerConfig = {
       id: 'piped',
       name: 'Piped - Amsterdam',
       method: 'GET',
-      target: 'https://piped.local-magic/',
+      target: 'https://uptime.wavycat.ru/route/piped',
       expectedCodes: [200],
       timeout: 30000,
       headers: {
         'User-Agent': userAgent,
       },
-      checkProxy: 'https://magic-proxy.wavycat.ru/',
+      checkProxy: 'worker://weur',
     },
   ],
   notification: {
