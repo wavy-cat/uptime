@@ -11,10 +11,10 @@ const pageConfig: PageConfig = {
   // [OPTIONAL] Group your monitors
   // If not specified, all monitors will be shown in a single list
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
-  // group: {
-  //   '🌐 Public (example group name)': ['foo_monitor', 'bar_monitor', 'more monitor ids...'],
-  //   '🔐 Private': ['test_tcp_monitor'],
-  // },
+  group: {
+    '🌐 Public': ['web', 'totemlib-docs', 'ca-assets', 'petpet'],
+    '🔐 Private': ['codeland', 'piped'],
+  },
 }
 
 const userAgent = 'Mozilla/5.0 (compatible; wavycatUptimeBot; +https://uptime.wavycat.ru)'
@@ -141,11 +141,11 @@ const workerConfig: WorkerConfig = {
       headers: {
         'User-Agent': userAgent,
       },
-      hideLatencyChart: true,
+      checkProxy: 'worker://eeur',
     },
     {
       id: 'piped',
-      name: 'Piped - Amsterdam',
+      name: 'Piped Edge — AMS',
       method: 'GET',
       target: 'https://uptime.wavycat.ru/route/piped',
       expectedCodes: [200],
